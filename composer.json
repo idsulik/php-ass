@@ -1,0 +1,29 @@
+{
+  "name": "idsulik/php-ass",
+  "description": "A PHP library for reading, creating, and manipulating Advanced SubStation Alpha (.ass) subtitle files.",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "PhpAss\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "PhpAss\\Tests\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Suleiman Dibirov",
+      "email": "idsulik@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": "^7.4 || ^8.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.0",
+    "doctrine/instantiator": "^1.5"
+  }
+}
