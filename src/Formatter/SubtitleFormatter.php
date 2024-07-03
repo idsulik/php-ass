@@ -4,16 +4,16 @@ namespace PhpAss\Formatter;
 
 use PhpAss\Model\Subtitle;
 
-class SubtitleFormatter
+class SubtitleFormatter implements SubtitleFormatterInterface
 {
-    private ScriptInfoFormatter $scriptInfoFormatter;
-    private StylesFormatter $stylesFormatter;
-    private EventsFormatter $eventsFormatter;
+    private ScriptInfoFormatterInterface $scriptInfoFormatter;
+    private StylesFormatterInterface $stylesFormatter;
+    private EventsFormatterInterface $eventsFormatter;
 
     public function __construct(
-        ScriptInfoFormatter $scriptInfoFormatter,
-        StylesFormatter $stylesFormatter,
-        EventsFormatter $eventsFormatter
+        ScriptInfoFormatterInterface $scriptInfoFormatter,
+        StylesFormatterInterface $stylesFormatter,
+        EventsFormatterInterface $eventsFormatter
     ) {
         $this->scriptInfoFormatter = $scriptInfoFormatter;
         $this->stylesFormatter = $stylesFormatter;

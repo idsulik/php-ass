@@ -4,7 +4,7 @@ namespace PhpAss\Formatter;
 
 use PhpAss\Model\ScriptInfo;
 
-class ScriptInfoFormatter
+class ScriptInfoFormatter implements ScriptInfoFormatterInterface
 {
     public function format(ScriptInfo $scriptInfo): string
     {

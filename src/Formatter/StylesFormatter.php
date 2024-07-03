@@ -5,7 +5,7 @@ namespace PhpAss\Formatter;
 use PhpAss\Model\Style;
 use PhpAss\Model\Styles;
 
-class StylesFormatter
+class StylesFormatter implements StylesFormatterInterface
 {
     public function format(Styles $styles): string
     {

@@ -2,14 +2,14 @@
 
 namespace PhpAss\Writer;
 
-use PhpAss\Formatter\SubtitleFormatter;
+use PhpAss\Formatter\SubtitleFormatterInterface;
 use PhpAss\Model\Subtitle;
 
 class SubtitleWriter
 {
-    private SubtitleFormatter $subtitleFormatter;
+    private SubtitleFormatterInterface $subtitleFormatter;
 
-    public function __construct(SubtitleFormatter $subtitleFormatter)
+    public function __construct(SubtitleFormatterInterface $subtitleFormatter)
     {
         $this->subtitleFormatter = $subtitleFormatter;
     }

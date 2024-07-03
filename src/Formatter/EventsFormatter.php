@@ -5,7 +5,7 @@ namespace PhpAss\Formatter;
 use PhpAss\Model\Event;
 use PhpAss\Model\Events;
 
-class EventsFormatter
+class EventsFormatter implements EventsFormatterInterface
 {
     public function format(Events $events): string
     {
