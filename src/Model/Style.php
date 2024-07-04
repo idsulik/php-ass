@@ -143,7 +143,10 @@ class Style
     private int $marginV;
 
     /**
-     * @var int defines the transparency of the text. SSA does not use this yet.
+     * @var int specifies the font character set or encoding and
+     * on multi-lingual Windows installations it provides access to characters used in multiple than one languages.
+     * It is usually 0 (zero) for English (Western, ANSI) Windows.
+     * When the file is Unicode, this field is useful during file format conversions.
      */
     private int $encoding;
 
@@ -155,22 +158,22 @@ class Style
         string $secondaryColor,
         string $outlineColor,
         string $backColor,
-        int $bold,
-        int $italic,
-        int $underline,
-        int $strikeOut,
-        int $scaleX,
-        int $scaleY,
-        int $spacing,
-        int $angle,
-        int $borderStyle,
-        int $outline,
-        int $shadow,
-        int $alignment,
-        int $marginL,
-        int $marginR,
-        int $marginV,
-        int $encoding
+        int $bold = 0,
+        int $italic = 0,
+        int $underline = 0,
+        int $strikeOut = 0,
+        int $scaleX = 100,
+        int $scaleY = 100,
+        int $spacing = 0,
+        int $angle = 0,
+        int $borderStyle = 0,
+        int $outline = 0,
+        int $shadow = 0,
+        int $alignment = self::ALIGNMENT_LEFT,
+        int $marginL = 0,
+        int $marginR = 0,
+        int $marginV = 0,
+        int $encoding = 0
     ) {
         $this->name = $name;
         $this->fontName = $fontName;
@@ -199,7 +202,7 @@ class Style
 
     public static function fromArray(array $data): self
     {
-        return new self(
+        $obj = new self(
             $data['Name'],
             $data['Fontname'],
             (int) $data['Fontsize'],
@@ -207,23 +210,73 @@ class Style
             $data['SecondaryColour'],
             $data['OutlineColour'],
             $data['BackColour'],
-            (int) $data['Bold'],
-            (int) $data['Italic'],
-            (int) $data['Underline'],
-            (int) $data['StrikeOut'],
-            (int) $data['ScaleX'],
-            (int) $data['ScaleY'],
-            (int) $data['Spacing'],
-            (int) $data['Angle'],
-            (int) $data['BorderStyle'],
-            (int) $data['Outline'],
-            (int) $data['Shadow'],
-            (int) $data['Alignment'],
-            (int) $data['MarginL'],
-            (int) $data['MarginR'],
-            (int) $data['MarginV'],
-            (int) $data['Encoding']
         );
+
+        if (isset($data['Bold'])) {
+            $obj->setBold((int) $data['Bold']);
+        }
+
+        if (isset($data['Italic'])) {
+            $obj->setItalic((int) $data['Italic']);
+        }
+
+        if (isset($data['Underline'])) {
+            $obj->setUnderline((int) $data['Underline']);
+        }
+
+        if (isset($data['StrikeOut'])) {
+            $obj->setStrikeOut((int) $data['StrikeOut']);
+        }
+
+        if (isset($data['ScaleX'])) {
+            $obj->setScaleX((int) $data['ScaleX']);
+        }
+
+        if (isset($data['ScaleY'])) {
+            $obj->setScaleY((int) $data['ScaleY']);
+        }
+
+        if (isset($data['Spacing'])) {
+            $obj->setSpacing((int) $data['Spacing']);
+        }
+
+        if (isset($data['Angle'])) {
+            $obj->setAngle((int) $data['Angle']);
+        }
+
+        if (isset($data['BorderStyle'])) {
+            $obj->setBorderStyle((int) $data['BorderStyle']);
+        }
+
+        if (isset($data['Outline'])) {
+            $obj->setOutline((int) $data['Outline']);
+        }
+
+        if (isset($data['Shadow'])) {
+            $obj->setShadow((int) $data['Shadow']);
+        }
+
+        if (isset($data['Alignment'])) {
+            $obj->setAlignment((int) $data['Alignment']);
+        }
+
+        if (isset($data['MarginL'])) {
+            $obj->setMarginL((int) $data['MarginL']);
+        }
+
+        if (isset($data['MarginR'])) {
+            $obj->setMarginR((int) $data['MarginR']);
+        }
+
+        if (isset($data['MarginV'])) {
+            $obj->setMarginV((int) $data['MarginV']);
+        }
+
+        if (isset($data['Encoding'])) {
+            $obj->setEncoding((int) $data['Encoding']);
+        }
+
+        return $obj;
     }
 
     public function getName(): string

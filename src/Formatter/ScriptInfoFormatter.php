@@ -8,19 +8,39 @@ class ScriptInfoFormatter implements ScriptInfoFormatterInterface
 {
     public function format(ScriptInfo $scriptInfo): string
     {
-        return sprintf(
-            "[Script Info]\nTitle: %s\nScriptType: %s\nWrapStyle: %s\nPlayResX: %s\nPlayResY: %s\nScaledBorderAndShadow: %s\nLast Style Storage: %s\nVideo File: %s\nVideo Aspect Ratio: %s\nVideo Zoom: %s\nVideo Position: %s",
+        $content = sprintf(
+            "[Script Info]\nTitle: %s\nScriptType: %s\nWrapStyle: %s\nPlayResX: %s\nPlayResY: %s",
             $scriptInfo->getTitle(),
             $scriptInfo->getScriptType(),
             $scriptInfo->getWrapStyle(),
             $scriptInfo->getPlayResX(),
             $scriptInfo->getPlayResY(),
-            $scriptInfo->getScaledBorderAndShadow(),
-            $scriptInfo->getLastStyleStorage(),
-            $scriptInfo->getVideoFile(),
-            $scriptInfo->getVideoAspectRatio(),
-            $scriptInfo->getVideoZoom(),
-            $scriptInfo->getVideoPosition(),
         );
+
+        if ($scriptInfo->getScaledBorderAndShadow() !== null) {
+            $content .= sprintf("\nScaledBorderAndShadow: %s", $scriptInfo->getScaledBorderAndShadow());
+        }
+
+        if ($scriptInfo->getLastStyleStorage() !== null) {
+            $content .= sprintf("\nLast Style Storage: %s", $scriptInfo->getLastStyleStorage());
+        }
+
+        if ($scriptInfo->getVideoFile() !== null) {
+            $content .= sprintf("\nVideo File: %s", $scriptInfo->getVideoFile());
+        }
+
+        if ($scriptInfo->getVideoAspectRatio() !== null) {
+            $content .= sprintf("\nVideo Aspect Ratio: %s", $scriptInfo->getVideoAspectRatio());
+        }
+
+        if ($scriptInfo->getVideoZoom() !== null) {
+            $content .= sprintf("\nVideo Zoom: %s", $scriptInfo->getVideoZoom());
+        }
+
+        if ($scriptInfo->getVideoPosition() !== null) {
+            $content .= sprintf("\nVideo Position: %s", $scriptInfo->getVideoPosition());
+        }
+
+        return $content;
     }
 }

@@ -19,11 +19,11 @@ class DialogueEvent extends Event
             Duration::fromString($eventData['End']),
             $eventData['Style'],
             $eventData['Name'],
-            $eventData['MarginL'] ?? null,
-            $eventData['MarginR'] ?? null,
-            $eventData['MarginV'] ?? null,
+            $eventData['Text'],
+            $eventData['MarginL'] ?? '0000',
+            $eventData['MarginR'] ?? '0000',
+            $eventData['MarginV'] ?? '0000',
             $eventData['Effect'] ?? null,
-            $eventData['Text']
         );
     }
 }

@@ -19,11 +19,11 @@ class CommentEvent extends Event
             Duration::fromString($eventData['End']),
             $eventData['Style'],
             $eventData['Name'],
+            $eventData['Text'],
             $eventData['MarginL'] ?? null,
             $eventData['MarginR'] ?? null,
             $eventData['MarginV'] ?? null,
             $eventData['Effect'] ?? null,
-            $eventData['Text']
         );
     }
 }
