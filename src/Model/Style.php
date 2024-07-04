@@ -4,23 +4,23 @@ namespace PhpAss\Model;
 
 class Style
 {
-    public const ALIGNMENT_LEFT = 1;
+    public const ALIGNMENT_BOTTOM_LEFT = 1;
 
-    public const ALIGNMENT_LEFT_TOPTITLE = 5;
+    public const ALIGNMENT_BOTTOM_CENTER = 2;
 
-    public const ALIGNMENT_LEFT_MIDTITLE = 9;
+    public const ALIGNMENT_BOTTOM_RIGHT = 3;
 
-    public const ALIGNMENT_CENTERED = 2;
+    public const ALIGNMENT_MIDDLE_LEFT = 4;
 
-    public const ALIGNMENT_CENTERED_TOPTITLE = 6;
+    public const ALIGNMENT_MIDDLE_CENTER = 5;
 
-    public const ALIGNMENT_CENTERED_MIDTITLE = 10;
+    public const ALIGNMENT_MIDDLE_RIGHT = 6;
 
-    public const ALIGNMENT_RIGHT = 3;
+    public const ALIGNMENT_TOP_LEFT = 7;
 
-    public const ALIGNMENT_RIGHT_TOPTITLE = 7;
+    public const ALIGNMENT_TOP_CENTER = 8;
 
-    public const ALIGNMENT_RIGHT_MIDTITLE = 11;
+    public const ALIGNMENT_TOP_RIGHT = 9;
 
     /**
      * @var string name of the Style. case-sensitive. Cannot include commas.
@@ -169,7 +169,7 @@ class Style
         int $borderStyle = 0,
         int $outline = 0,
         int $shadow = 0,
-        int $alignment = self::ALIGNMENT_LEFT,
+        int $alignment = 0,
         int $marginL = 0,
         int $marginR = 0,
         int $marginV = 0,

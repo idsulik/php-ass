@@ -11,13 +11,13 @@ class SubtitleFormatter implements SubtitleFormatterInterface
     private EventsFormatterInterface $eventsFormatter;
 
     public function __construct(
-        ScriptInfoFormatterInterface $scriptInfoFormatter,
-        StylesFormatterInterface $stylesFormatter,
-        EventsFormatterInterface $eventsFormatter
+        ScriptInfoFormatterInterface $scriptInfoFormatter = null,
+        StylesFormatterInterface $stylesFormatter = null,
+        EventsFormatterInterface $eventsFormatter = null
     ) {
-        $this->scriptInfoFormatter = $scriptInfoFormatter;
-        $this->stylesFormatter = $stylesFormatter;
-        $this->eventsFormatter = $eventsFormatter;
+        $this->scriptInfoFormatter = $scriptInfoFormatter ?? new ScriptInfoFormatter();
+        $this->stylesFormatter = $stylesFormatter ?? new StylesFormatter();
+        $this->eventsFormatter = $eventsFormatter ?? new EventsFormatter();
     }
 
     public function format(Subtitle $subtitle): string

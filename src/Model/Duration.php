@@ -19,6 +19,17 @@ class Duration
         return new self($hours, $minutes, $seconds, $milliseconds);
     }
 
+    public static function fromSeconds(float $seconds): self
+    {
+        $milliseconds = (int) round(($seconds - floor($seconds)) * 1000);
+        $time = round($seconds);
+        $hours = (int) floor($time / 3600);
+        $minutes = (int) floor(($time % 3600) / 60);
+        $seconds = (int) floor($time % 60);
+
+        return new self($hours, $minutes, $seconds, $milliseconds);
+    }
+
     public function __construct(int $hours, int $minutes, int $seconds, int $milliseconds)
     {
         $this->hours = $hours;
