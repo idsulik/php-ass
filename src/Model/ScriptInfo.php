@@ -9,22 +9,22 @@ class ScriptInfo implements ArrayAccess
     /**
      * @var int smart wrapping, lines are evenly broken
      */
-    private const WRAP_STYLE_SMART = 0;
+    public const WRAP_STYLE_SMART = 0;
 
     /**
      * @var int end-of-line word wrapping, only \N breaks
      */
-    private const WRAP_STYLE_EOL = 1;
+    public const WRAP_STYLE_EOL = 1;
 
     /**
      * @var int no word wrapping, \n \N both breaks
      */
-    private const WRAP_STYLE_NONE = 2;
+    public const WRAP_STYLE_NONE = 2;
 
     /**
      * @var int same as 0, but lower line gets wider.
      */
-    private const WRAP_STYLE_SMART_LOWER = 3;
+    public const WRAP_STYLE_SMART_LOWER = 3;
 
     /**
      * @var string description of the script
