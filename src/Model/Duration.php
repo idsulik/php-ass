@@ -7,35 +7,36 @@ class Duration
     private int $hours;
     private int $minutes;
     private int $seconds;
-    private int $milliseconds;
+    private int $tenths;
 
     public static function fromString(string $duration): self
     {
         $parts = explode(':', $duration);
         $hours = (int) $parts[0];
         $minutes = (int) $parts[1];
-        [$seconds, $milliseconds] = explode('.', $parts[2]);
+        [$seconds, $tenths] = explode('.', $parts[2]);
 
-        return new self($hours, $minutes, $seconds, $milliseconds);
+        return new self($hours, $minutes, $seconds, $tenths);
     }
 
     public static function fromSeconds(float $seconds): self
     {
-        $milliseconds = (int) round(($seconds - floor($seconds)) * 1000);
-        $time = round($seconds);
-        $hours = (int) floor($time / 3600);
-        $minutes = (int) floor(($time % 3600) / 60);
-        $seconds = (int) floor($time % 60);
+        $roundedSeconds = floor($seconds * 10);
 
-        return new self($hours, $minutes, $seconds, $milliseconds);
+        $hours = (int) floor($roundedSeconds / 36000);
+        $minutes = (int) floor(($roundedSeconds % 36000) / 600);
+        $seconds = (int) floor(($roundedSeconds % 600) / 10);
+        $tenths = $roundedSeconds % 10;
+
+        return new self($hours, $minutes, $seconds, $tenths);
     }
 
-    public function __construct(int $hours, int $minutes, int $seconds, int $milliseconds)
+    public function __construct(int $hours, int $minutes, int $seconds, int $tenths)
     {
         $this->hours = $hours;
         $this->minutes = $minutes;
         $this->seconds = $seconds;
-        $this->milliseconds = $milliseconds;
+        $this->tenths = $tenths;
     }
 
     public function getHours(): int
@@ -53,9 +54,9 @@ class Duration
         return $this->seconds;
     }
 
-    public function getMilliseconds(): int
+    public function getTenths(): int
     {
-        return $this->milliseconds;
+        return $this->tenths;
     }
 
     public function __toString(): string
@@ -65,7 +66,7 @@ class Duration
             $this->hours,
             $this->minutes,
             $this->seconds,
-            $this->milliseconds
+            $this->tenths
         );
     }
 }

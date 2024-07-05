@@ -163,6 +163,7 @@ class ScriptInfo implements ArrayAccess
         return property_exists($this, $offset);
     }
 
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return $this->$offset;

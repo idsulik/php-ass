@@ -15,12 +15,12 @@ class DurationTest extends TestCase
             'hours' => 1,
             'minutes' => 2,
             'seconds' => 3,
-            'milliseconds' => 456,
+            'tenth' => 456,
         ], [
             'hours' => $duration->getHours(),
             'minutes' => $duration->getMinutes(),
             'seconds' => $duration->getSeconds(),
-            'milliseconds' => $duration->getMilliseconds(),
+            'tenth' => $duration->getTenths(),
         ]);
     }
 
@@ -32,12 +32,12 @@ class DurationTest extends TestCase
             'hours' => 1,
             'minutes' => 2,
             'seconds' => 3,
-            'milliseconds' => 456,
+            'tenth' => 4,
         ], [
             'hours' => $duration->getHours(),
             'minutes' => $duration->getMinutes(),
             'seconds' => $duration->getSeconds(),
-            'milliseconds' => $duration->getMilliseconds(),
+            'tenth' => $duration->getTenths(),
         ]);
     }
 }
